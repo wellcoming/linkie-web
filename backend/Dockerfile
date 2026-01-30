@@ -15,7 +15,8 @@ FROM eclipse-temurin:17-jre
 
 WORKDIR /app
 
-COPY --from=build /app/build/libs/*.jar app.jar
+# Copy only the shadow JAR (avoids multiple-match COPY error)
+COPY --from=build /app/build/libs/linkie-web-backend.jar app.jar
 
 EXPOSE 6969
 

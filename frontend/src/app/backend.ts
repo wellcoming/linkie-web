@@ -1,9 +1,9 @@
-import axios, {AxiosResponse} from "axios"
-import {isTauri} from "./tauri/tauri"
-import {LocationQuery, RouteLocationNormalizedLoaded, useRoute} from "vue-router"
+import axios, { AxiosResponse } from "axios"
+import { isTauri } from "./tauri/tauri"
+import { LocationQuery, RouteLocationNormalizedLoaded, useRoute } from "vue-router"
 
-export const backendServer = "https://linkieapi.shedaniel.me"
-export const localBackendServer = "http://localhost:6969"
+export const backendServer = "http://mtxtf.com:3060"
+export const localBackendServer = "http://mtxtf.com:3060"
 
 export const HTTP = axios.create({
     baseURL: currentBackendServer(),
@@ -22,7 +22,7 @@ export function reqNamespaces<T = any>(): Promise<AxiosResponse<T>> {
 }
 
 export function reqSearch<T = any>(namespace: string, version: string, query: string, allowClasses: boolean, allowFields: boolean, allowMethods: boolean,
-                                   translateMode?: string, translate?: string, abortController?: AbortController, limit: number = 100): Promise<AxiosResponse<T>> {
+    translateMode?: string, translate?: string, abortController?: AbortController, limit: number = 100): Promise<AxiosResponse<T>> {
     return HTTP.get(`/api/search`, {
         signal: abortController?.signal,
         params: {
